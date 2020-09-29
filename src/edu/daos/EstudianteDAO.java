@@ -33,15 +33,15 @@ public class EstudianteDAO extends DAOGenericoImpl<Estudiante>{
 	 * @param e
 	 * @return id con el cual se almacena en BD
 	 */
-	public boolean addEstudiante(Estudiante e) {
-		EntityManager em = EMF.getEntityManager();
-		em.getTransaction().begin();
-		em.persist(e);
-		em.getTransaction().commit();
-		em.close();
-		
-		return this.getEstudiante(e.getId()) != null;
-	}
+//	public boolean addEstudiante(Estudiante e) {
+//		EntityManager em = EMF.getEntityManager();
+//		em.getTransaction().begin();
+//		em.persist(e);
+//		em.getTransaction().commit();
+//		em.close();
+//		
+//		return this.getEstudiante(e.getId()) != null;
+//	}
 
 	public Estudiante getEstudiante(int id) {
 		EntityManager em = EMF.getEntityManager();

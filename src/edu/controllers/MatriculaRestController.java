@@ -57,7 +57,7 @@ public class MatriculaRestController {
 		}
 		
 		Matricula m = new Matricula(e, c);
-		mRepo.addMatricula(m);
+		mRepo.add(m);
 		return Response.status(201).entity(e).build();
 	}
 	

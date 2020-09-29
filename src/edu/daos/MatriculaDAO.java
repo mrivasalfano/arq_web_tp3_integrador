@@ -49,14 +49,14 @@ private static MatriculaDAO instance;
 	 * @param m
 	 * @return id con el cual se almacena en BD
 	 */
-	public int addMatricula(Matricula m) {
-		EntityManager em = EMF.getEntityManager();
-		em.getTransaction().begin();
-		em.persist(m);
-		em.getTransaction().commit();
-		em.close();
-		return m.getId();
-	}
+//	public int addMatricula(Matricula m) {
+//		EntityManager em = EMF.getEntityManager();
+//		em.getTransaction().begin();
+//		em.persist(m);
+//		em.getTransaction().commit();
+//		em.close();
+//		return m.getId();
+//	}
 
 	/**
 	 * Devuelve un reporte de las carreras, que para cada carrera incluya
