@@ -4,21 +4,19 @@ class Estudiante extends CRUDGenerico {
         this.listaEstudiante = document.querySelector('.estudiantes-container__lista');
     }
 
-    async getAll() {
-        return await super.getAll();
-    }
-
-    async getEstudianteLibreta(numero) {
-        const response = await fetch(this.BASEURI + "/" + this.RESOURCE + '/lu/' + numero);
-        console.log(response);
-        return await response.json();
-    }
+	async getEstudianteLibreta(numero){
+		this.getModular(`/lu/${numero}`).then( estudiantes => console.log(estudiantes));
+	}
+	
+	async getEstudiantesGenero(genero){
+		this.getModular(`/genero/${genero}`).then( estudiantes => console.log(estudiantes));
+	}
 
     mostrarEstudiantes(estudiantes) {
         this.listaEstudiante.innerHTML = '<ul>';
 
         estudiantes.forEach(est => {
-            this.listaEstudiante.innerHTML += `<li>${est.nombres} ${est.apellido}</li>`;
+            this.listaEstudiante.innerHTML += `<li>${est.nombres} ${est.apellido} - ${est.nroLibretaUni}</li>`;
         });
 
         this.listaEstudiante.innerHTML += '</ul>';

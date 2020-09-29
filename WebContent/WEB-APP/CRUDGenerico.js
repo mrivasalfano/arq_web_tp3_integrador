@@ -24,4 +24,15 @@ class CRUDGenerico {
 	        const response = await fetch(this.BASEURI + "/" + this.RESOURCE + uri);
 	        return await response.json();
 	}
+	
+	async postModular(uri, data) {
+        await fetch(this.BASEURI + '/' + this.RESOURCE + uri, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+    }
 }

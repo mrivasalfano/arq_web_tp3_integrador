@@ -27,7 +27,7 @@ class Carrera extends CRUDGenerico {
 			alert('Ingresa un id');
 		}
 		else {
-			this.getModular(`/${id}/estudiantes`).then( response => this.mostrarReporte(response));			
+			this.getModular(`/${id}/estudiantes?ciudad=Bolivar"`).then( response => this.mostrarReporte(response));			
 		}
 	}
 	

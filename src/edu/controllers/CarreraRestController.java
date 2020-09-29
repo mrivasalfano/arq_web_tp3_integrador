@@ -33,7 +33,7 @@ public class CarreraRestController {
 	@GET
 	@Path("/reporte")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ReporteCarrera getCarreras(@DefaultValue("") @QueryParam("filtro") String filtro) {
+	public ReporteCarrera getReporteCarreras(@DefaultValue("") @QueryParam("filtro") String filtro) {
 		if (filtro.equals("inscriptos"))
 			return DAOFactoryImpl.getInstance().getCarreraDAO().getCarrerasEstudiantesIns();
 		

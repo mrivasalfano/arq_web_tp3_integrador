@@ -10,10 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(estudiantes => ESTUDIANTE.mostrarEstudiantes(estudiantes));
     });
 
+	document.querySelector('.estudiantes-container__btnGenero').addEventListener('click', () => {
+        const genero = document.querySelector('.estudiantes-container__numeroLibreta').value;
+        ESTUDIANTE.getEstudiantesGenero(genero);
+    });
+
+
     document.querySelector('.estudiantes-container__btnBuscar').addEventListener('click', () => {
         const numero = document.querySelector('.estudiantes-container__numeroLibreta').value;
-        ESTUDIANTE.getEstudianteLibreta(numero)
-            .then(estudiantes => ESTUDIANTE.mostrarEstudiantes(estudiantes));
+        ESTUDIANTE.getEstudianteLibreta(numero);
     });
 
     document.querySelector('.carreras-container__btn').addEventListener('click', () => {
@@ -48,6 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('.matriculas-container__btn').addEventListener('click', () => {
         MATRICULA.getAll()
             .then(matriculas => MATRICULA.mostrarMatriculas(matriculas));
+    });
+
+	document.querySelector('.matriculas-container__btnMatricular').addEventListener('click', () => {
+        MATRICULA.matricularEstudiante(2, 1);
     });
 
 	document.querySelector('.matriculas-container__btnReporte').addEventListener('click', () => {
