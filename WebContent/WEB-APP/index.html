@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="estudiantes-container">
+        <input class="estudiantes-container__numeroLibreta" type="text" placeholder="Número libreta universitaria">
+        <button class="estudiantes-container__btnBuscar">Buscar</button>
+        <button class="estudiantes-container__btn">Obtener estudiantes</button>
+        <h3>Lista de estudiantes</h3>
+        <div class="estudiantes-container__lista">
+
+        </div>
+    </div>
+
+    <div class="carreras-container">
+        <input class="carreras-container__input" type="text">
+        <button class="carreras-container__btnAgregar">Agregar</button>
+        <button class="carreras-container__btn">Obtener carreras</button>
+        <button class="carreras-container__btnReporte">Obtener reporte inscriptos</button>
+        <button class="carreras-container__btnCarreraId">Obtener carrera por id</button>
+        <button class="carreras-container__btnCarreraEstudiantes">Obtener estudiantes de una carrera</button>
+        <h3>Lista de carreras</h3>
+        <div class="carreras-container__lista">
+
+        </div>
+    </div>
+
+    <div class="matriculas-container">
+        <button class="matriculas-container__btn">Obtener matriculas</button>
+        <button class="matriculas-container__btnReporte">Obtener reportes</button>
+        <h3>Lista de matriculas</h3>
+        <div class="matriculas-container__lista">
+
+        </div>
+    </div>
+
+    <script src="WEB-APP/CRUDGenerico.js"></script>
+    <script src="WEB-APP/Estudiante.js"></script>
+    <script src="WEB-APP/Carrera.js"></script>
+    <script src="WEB-APP/Matricula.js"></script>
+    <script src="WEB-APP/main.js"></script>
+</body>
+
+</html>
