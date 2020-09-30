@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector('.estudiantes-container__btnBuscar').addEventListener('click', () => {
         const numero = document.querySelector('.estudiantes-container__numeroLibreta').value;
-        ESTUDIANTE.getEstudianteLibreta(numero);
+		if(numero != '' && numero > 0)
+        	ESTUDIANTE.getEstudianteLibreta(numero);
+		else
+			alert('Ingrese un número')
     });
 
     document.querySelector('.carreras-container__btn').addEventListener('click', () => {
@@ -32,7 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "nombre": nombre
         };
 
-        CARRERA.add(data);
+        CARRERA.add(data)
+				.then(() => alert('Carrera agregada'))
+				.catch(err => alert(err));
     });
 
 	document.querySelector('.carreras-container__btnCarreraId').addEventListener('click', () => {

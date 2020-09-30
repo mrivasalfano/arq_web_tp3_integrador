@@ -52,8 +52,7 @@ public class MatriculaRestController {
 		
 		if((e == null)||(c == null)) {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).
-					   entity("No se pudo persistir la matricula").
-					   type(MediaType.TEXT_PLAIN).build();	
+					   entity("No se pudo persistir la matricula").build();	
 		}
 		
 		Matricula m = new Matricula(e, c);

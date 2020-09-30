@@ -15,11 +15,13 @@ class Carrera extends CRUDGenerico {
     }
 
 	getReporte(filtro){
-		this.getModular(`/reporte?filtro=${filtro}`).then( response => this.mostrarReporte(response));
+		this.getModular(`/reporte?filtro=${filtro}`).then( response => this.mostrarReporte(response))
+													.catch(err => alert(err));
 	}
 	
 	getCarreraId(id){
-		this.getModular(`/${id}`).then( response => this.mostrarReporte(response));
+		this.getModular(`/${id}`).then( response => this.mostrarReporte(response))
+								 .catch(err => alert(err));
 	}
 	
 	getCarreraEstudiantes(id){
@@ -27,7 +29,8 @@ class Carrera extends CRUDGenerico {
 			alert('Ingresa un id');
 		}
 		else {
-			this.getModular(`/${id}/estudiantes?ciudad=Bolivar"`).then( response => this.mostrarReporte(response));			
+			this.getModular(`/${id}/estudiantes?ciudad=Bolivar"`).then( response => this.mostrarReporte(response))
+																 .catch(err => alert(err));			
 		}
 	}
 	

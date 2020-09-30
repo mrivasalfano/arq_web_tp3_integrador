@@ -40,8 +40,7 @@ public class EstudianteRestController {
 		if(e != null)
 			return Response.status(200).entity(e).build();
 		
-		return Response.status(404).entity("No se encuentra estudiante con este número de libreta").
-				type(MediaType.TEXT_PLAIN).build();
+		return Response.status(404).entity("No se encuentra estudiante con este número de libreta").build();
 	}
 	
 	@GET

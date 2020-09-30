@@ -21,6 +21,8 @@ public class EMF implements ServletContextListener {
 	private static EntityManagerFactory emf;
 
 	/**
+	 * Crea el EntityManagerFactory y llama a insertStarter
+	 * para cargar datos de pruebas
 	 * @see ServletContextListener#contextInitialized(ServletContextEvent)
 	 */
 	public void contextInitialized(ServletContextEvent arg0) {

@@ -5,28 +5,26 @@ class CRUDGenerico {
     }
 
     async add(data) {
-        await fetch(this.BASEURI + '/' + this.RESOURCE, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+		return this.postModular('', data);
     }
 
     async getAll() {
-        const response = await fetch(this.BASEURI + "/" + this.RESOURCE);
-        return await response.json();
+        return this.getModular('');
     }
 
 	async getModular(uri) {
-	        const response = await fetch(this.BASEURI + "/" + this.RESOURCE + uri);
-	        return await response.json();
+    	const response = await fetch(this.BASEURI + "/" + this.RESOURCE + uri);
+
+		if(response.ok)
+			return await response.json();
+		else {
+			const errorMessage = await response.text();
+			return Promise.reject(errorMessage);						
+		}
 	}
 	
 	async postModular(uri, data) {
-        await fetch(this.BASEURI + '/' + this.RESOURCE + uri, {
+        const response = await fetch(this.BASEURI + '/' + this.RESOURCE + uri, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -34,5 +32,10 @@ class CRUDGenerico {
             },
             body: JSON.stringify(data)
         });
+
+		if(!response.ok) {
+			const error = await response.text();			
+			return Promise.reject(error);
+		}
     }
 }

@@ -15,12 +15,14 @@ class Matricula extends CRUDGenerico {
     }
 
 	getReporte(){
-		this.getModular(`/reporte`).then( response => this.mostrarData(response));
+		this.getModular(`/reporte`).then( response => this.mostrarData(response))
+								   .catch(err => alert(err));
 	}
 	
 	matricularEstudiante(idEstudiante, idCarrera) {
 		this.postModular('', {idEstudiante : idEstudiante, idCarrera: idCarrera})
-		.then(() => console.log('Matriculado!'));
+		.then(() => console.log('Matriculado!'))
+		.catch(err => alert(err));
 	}
 	
 	

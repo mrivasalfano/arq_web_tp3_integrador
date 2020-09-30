@@ -5,11 +5,13 @@ class Estudiante extends CRUDGenerico {
     }
 
 	async getEstudianteLibreta(numero){
-		this.getModular(`/lu/${numero}`).then( estudiantes => console.log(estudiantes));
+		this.getModular(`/lu/${numero}`).then(estudiantes => console.log(estudiantes))
+										.catch(err => alert(err));
 	}
 	
 	async getEstudiantesGenero(genero){
-		this.getModular(`/genero/${genero}`).then( estudiantes => console.log(estudiantes));
+		this.getModular(`/genero/${genero}`).then( estudiantes => console.log(estudiantes))
+											.catch(err => alert(err));
 	}
 
     mostrarEstudiantes(estudiantes) {
