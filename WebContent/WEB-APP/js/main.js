@@ -6,23 +6,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const MATRICULA = new Matricula();
     const selectCarreras = document.querySelector('#selectCarreras');
     const container = document.querySelector('.main');
-	const modalLibreta = $('#modalLibreta');
-//    traerCarreras();
+    const modalLibreta = $('#modalLibreta');
+    const modalCarreraId = $('#modalCarreraId');
+	const modalAgregarCarrera = $('#modalAgregarCarrera');
+	const modalEstudiantesCarrera = $('#modalEstudiantesCarrera');
+    traerCarreras();
 
-	document.querySelector('.estudiantes-container__btnLibreta').addEventListener('click', () => {
-		pedirNroLibreta();
-	});
-	
-	document.querySelector('.estudiantes-container__btnBuscar').addEventListener('click', () => {
-		const numero = document.querySelector('.estudiantes-container__numeroLibreta').value;
-		
-		if(numero > 0 && numero != '') {
-			ESTUDIANTE.getEstudianteLibreta(numero);
-			modalLibreta.modal('hide');			
-		}
-		else
-			alert('Ingrese un número');
-	});
+    document.querySelector('.estudiantes-container__btnLibreta').addEventListener('click', () => {
+        pedirNroLibreta();
+    });
+
+    document.querySelector('.estudiantes-container__btnBuscar').addEventListener('click', () => {
+        const numero = document.querySelector('.estudiantes-container__numeroLibreta').value;
+
+        if (numero > 0 && numero != '') {
+            ESTUDIANTE.getEstudianteLibreta(numero);
+            modalLibreta.modal('hide');
+        } else
+            alert('Ingrese un número');
+    });
 
     document.querySelector('.estudiantes-container__btn').addEventListener('click', () => {
         ESTUDIANTE.getAll()
@@ -41,24 +43,50 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(carreras => CARRERA.mostrarCarreras(carreras));
     });
 
-    document.querySelector('.carreras-container__btnAgregar').addEventListener('click', () => {
-        const nombre = document.querySelector('.carreras-container__input').value;
-        let data = {
-            "nombre": nombre
-        };
+    document.querySelector('.carreras-container__btnBuscarId').addEventListener('click', () => {
+        pedirIdCarrera();
+    });
 
-        CARRERA.add(data)
-            .then(() => alert('Carrera agregada'))
-            .catch(err => alert(err));
+	document.querySelector('.carreras-container__btnAgregarModal').addEventListener('click', () => {
+        agregarCarrera();
+    });
+
+	document.querySelector('.carreras-container__btnEstudiantesCarreraModal').addEventListener('click', () => {
+        obtenerEstudiantesCarrera();
+    });
+
+    document.querySelector('.carreras-container__btnAgregar').addEventListener('click', () => {
+        const nombre = document.querySelector('.carreras-container__inputCarrera').value;
+
+		if(nombre != '') {
+	        let data = {
+	            "nombre": nombre
+	        };
+	
+	        CARRERA.add(data)
+	            .then(() => {
+					alert('Carrera agregada');
+					modalAgregarCarrera.modal('hide');
+				})
+	            .catch(err => alert(err));			
+		}
+		else
+			alert('Ingrese un nombre');
     });
 
     document.querySelector('.carreras-container__btnCarreraId').addEventListener('click', () => {
         const id = document.querySelector('.carreras-container__input').value;
-        CARRERA.getCarreraId(id);
+		if(id > 0 && id != '') {
+        	CARRERA.getCarreraId(id);
+			modalCarreraId.modal('hide');			
+		}
+		else
+			alert('Ingrese un id');
     });
 
     document.querySelector('.carreras-container__btnCarreraEstudiantes').addEventListener('click', () => {
-         CARRERA.getCarreraEstudiantes(selectCarreras.value);
+        CARRERA.getCarreraEstudiantes(selectCarreras.value);
+		modalEstudiantesCarrera.modal('hide');
     });
 
     document.querySelector('.carreras-container__btnReporte').addEventListener('click', () => {
@@ -87,7 +115,19 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-	function pedirNroLibreta() {
-		modalLibreta.modal('show');
+    function pedirNroLibreta() {
+        modalLibreta.modal('show');
+    }
+
+    function pedirIdCarrera() {
+        modalCarreraId.modal('show');
+    }
+
+	function agregarCarrera() {
+        modalAgregarCarrera.modal('show');
+    }
+
+	function obtenerEstudiantesCarrera() {
+		modalEstudiantesCarrera.modal('show');
 	}
 });

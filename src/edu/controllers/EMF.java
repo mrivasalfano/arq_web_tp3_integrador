@@ -75,6 +75,7 @@ public class EMF implements ServletContextListener {
 		Matricula ec4 = new Matricula(e4, c2);
 		Matricula ec5 = new Matricula(e5, c1);
 		Matricula ec6 = new Matricula(e4, c1);
+		ec1.setGraduado(1);
 		
 		mr.add(ec1);
 		mr.add(ec2);

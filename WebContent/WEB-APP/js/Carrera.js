@@ -5,17 +5,19 @@ class Carrera extends CRUDGenerico {
     }
 
     mostrarCarreras(carreras) {
-		let filas = '';
-		
-		carreras.forEach(carr => {
-			filas += `	<tr>
+        let filas = '';
+
+        carreras.forEach(carr => {
+            filas += `	<tr>
 							<td>${carr.id}</td>
 							<td>${carr.nombre}</td>
 						</tr>`;
-		});
-		
-        this.container.innerHTML = 
-			`<table class="table">
+        });
+
+
+
+        this.container.innerHTML =
+            `<table class="table">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">id</th>
@@ -28,23 +30,74 @@ class Carrera extends CRUDGenerico {
 				</table>`;
     }
 
-	getReporte(filtro){
-		this.getModular(`/reporte?filtro=${filtro}`).then( response => this.mostrarReporte(response))
-													.catch(err => alert(err));
-	}
-	
-	getCarreraId(id){
-		this.getModular(`/${id}`).then( response => this.mostrarReporte(response))
-								 .catch(err => alert(err));
-	}
-	
-	getCarreraEstudiantes(id){
-		if(id === ''){
-			alert('Ingresa un id');
-		}
-		else {
-			this.getModular(`/${id}/estudiantes?ciudad=Bolivar"`).then( response => this.mostrarReporte(response))
-																 .catch(err => alert(err));			
-		}
-	}
+    mostrarCarrera(carrera) {
+        let filas = `	<tr>
+							<td>${carrera.id}</td>
+							<td>${carrera.nombre}</td>
+						</tr>`;
+
+        this.container.innerHTML =
+            `<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">id</th>
+							<th scope="col">Nombre</th>
+						</tr>
+					</thead>
+					<tbody class="bg-light">
+						${filas}
+					</tbody>
+				</table>`;
+    }
+
+    mostrarReporte(reporte) {
+        reporte.carrera.forEach(rep => {
+            rep['cantidad'] = reporte.cantidad[rep.id];
+        });
+        
+		const carreras = reporte.carrera;
+		let filas = '';
+
+        carreras.forEach(carr => {
+            filas += `	<tr>
+							<td>${carr.id}</td>
+							<td>${carr.nombre}</td>
+							<td>${carr.cantidad}</td>
+						</tr>`;
+        });
+
+
+
+        this.container.innerHTML =
+            `<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">id</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Cantidad</th>
+						</tr>
+					</thead>
+					<tbody class="bg-light">
+						${filas}
+					</tbody>
+				</table>`;
+    }
+
+    getReporte(filtro) {
+        this.getModular(`/reporte?filtro=${filtro}`).then(reporte => this.mostrarReporte(reporte))
+            .catch(err => alert(err));
+    }
+
+    getCarreraId(id) {
+        this.getModular(`/${id}`).then(carrera => this.mostrarCarrera(carrera))
+            .catch(err => alert(err));
+    }
+
+    getCarreraEstudiantes(id) {
+        this.getModular(`/${id}/estudiantes?ciudad=Bolivar`).then(response => {
+				let estudiante = new Estudiante();
+				estudiante.mostrarEstudiantes(response);
+			})
+            .catch(err => alert(err));
+    }
 }
