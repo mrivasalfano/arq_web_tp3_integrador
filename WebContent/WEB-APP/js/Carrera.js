@@ -1,17 +1,31 @@
 class Carrera extends CRUDGenerico {
     constructor() {
         super('carreras');
-        this.listaCarrera = document.querySelector('.main');
+        this.container = document.querySelector('.main');
     }
 
     mostrarCarreras(carreras) {
-        this.listaCarrera.innerHTML = '<ul>';
-
-        carreras.forEach(c => {
-            this.listaCarrera.innerHTML += `<li>${c.nombre}</li>`;
-        });
-
-        this.listaCarrera.innerHTML += '</ul>';
+		let filas = '';
+		
+		carreras.forEach(carr => {
+			filas += `	<tr>
+							<td>${carr.id}</td>
+							<td>${carr.nombre}</td>
+						</tr>`;
+		});
+		
+        this.container.innerHTML = 
+			`<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">id</th>
+							<th scope="col">Nombre</th>
+						</tr>
+					</thead>
+					<tbody class="bg-light">
+						${filas}
+					</tbody>
+				</table>`;
     }
 
 	getReporte(filtro){
@@ -32,9 +46,5 @@ class Carrera extends CRUDGenerico {
 			this.getModular(`/${id}/estudiantes?ciudad=Bolivar"`).then( response => this.mostrarReporte(response))
 																 .catch(err => alert(err));			
 		}
-	}
-	
-	mostrarReporte(reporte){
-		console.log(reporte);
 	}
 }
