@@ -5,49 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="WEB-APP/css/bootstrap.min.css">
+    <link rel="stylesheet" href="WEB-APP/css/style.css">
 </head>
 
-<body>
-    <div class="estudiantes-container">
-        <input class="estudiantes-container__numeroLibreta" type="text" placeholder="Número libreta universitaria">
-        <button class="estudiantes-container__btnBuscar">Buscar</button>
-        <button class="estudiantes-container__btnGenero">Filtrar por género</button>
-        <button class="estudiantes-container__btn">Obtener estudiantes</button>
-        <h3>Lista de estudiantes</h3>
-        <div class="estudiantes-container__lista">
+<body class="bg-secondary">
+    <div class="container m-0 p-0" style="height: 100vh;">
+        <div class="row h-100">
+            <div class="col-auto h-100 pr-0">
+                <div class="sidebar bg-dark h-100 d-flex flex-column justify-content-around">
+                    <div class="estudiantes-container">
+                        <h3 class="text-info px-2">Estudiantes</h3>
+                        <div class="px-3">
+                            <span class="estudiantes-container__btn">Obtener estudiantes</span>
+                            <span class="estudiantes-container__btnGenero" data-genero="Masculino">Filtrar por masculinos</span>
+                            <span class="estudiantes-container__btnGenero" data-genero="Femenino">Filtrar por femeninos</span>
+							<span class="estudiantes-container__btnLibreta">Buscar por número de libreta</span>
+                        </div>
+                    </div>
 
+                    <div class="carreras-container">
+                        <h3 class="text-info px-2">Carrera</h3>
+                        <!--                             <input class="carreras-container__input" type="text"> -->
+                        <div class="px-3">
+                            <span class="carreras-container__btn">Obtener carreras</span>
+                            <span class="carreras-container__btnAgregar">Agregar</span>
+                            <span class="carreras-container__btnCarreraId">Obtener carrera por id</span>
+                            <span class="carreras-container__btnReporte">Obtener reporte inscriptos</span>
+                            <!--                         <select id="selectCarreras"></select> -->
+                            <span class="carreras-container__btnCarreraEstudiantes">Obtener estudiantes de una carrera</span>
+                        </div>
+                    </div>
+
+                    <div class="matriculas-container">
+                        <h3 class="text-info px-2">Matrícula</h3>
+                        <div class="px-3">
+                            <span class="matriculas-container__btn">Obtener matriculas</span>
+                            <span class="matriculas-container__btnReporte">Obtener reportes</span>
+                            <!--         <span class="matriculas-container__btnMatricular">Matricular estudiante</span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col main pt-5 d-flex justify-content-center"></div>
         </div>
     </div>
+    
+    <!-- MODAL LIBRETA -->
+	<div id="modalLibreta" class="modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Buscar por número de libreta</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col">
+							<input class="form-control estudiantes-container__numeroLibreta" type="text"
+								placeholder="Número libreta universitaria">
+							<div class="mt-2 alert alert-info" role="alert">
+								<p>Sugerencia de números: 1, 2, 3, 4, 5</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<span class="btn btn-info estudiantes-container__btnBuscar">Buscar</span>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="carreras-container">
-        <input class="carreras-container__input" type="text">
-        <button class="carreras-container__btnAgregar">Agregar</button>
-        <button class="carreras-container__btn">Obtener carreras</button>
-        <button class="carreras-container__btnReporte">Obtener reporte inscriptos</button>
-        <button class="carreras-container__btnCarreraId">Obtener carrera por id</button>
-        <button class="carreras-container__btnCarreraEstudiantes">Obtener estudiantes de una carrera</button>
-        <h3>Lista de carreras</h3>
-        <div class="carreras-container__lista">
 
-        </div>
-    </div>
-
-    <div class="matriculas-container">
-        <button class="matriculas-container__btn">Obtener matriculas</button>
-        <button class="matriculas-container__btnReporte">Obtener reportes</button>
-        <button class="matriculas-container__btnMatricular">Matricular estudiante</button>
-   
-        <h3>Lista de matriculas</h3>
-        <div class="matriculas-container__lista">
-
-        </div>
-    </div>
-
-    <script src="WEB-APP/CRUDGenerico.js"></script>
-    <script src="WEB-APP/Estudiante.js"></script>
-    <script src="WEB-APP/Carrera.js"></script>
-    <script src="WEB-APP/Matricula.js"></script>
-    <script src="WEB-APP/main.js"></script>
+	<script src="WEB-APP/js/jquery.min.js"></script>
+    <script src="WEB-APP/js/bootstrap.min.js"></script>
+    <script src="WEB-APP/js/CRUDGenerico.js"></script>
+    <script src="WEB-APP/js/Estudiante.js"></script>
+    <script src="WEB-APP/js/Carrera.js"></script>
+    <script src="WEB-APP/js/Matricula.js"></script>
+    <script src="WEB-APP/js/main.js"></script>
 </body>
 
 </html>

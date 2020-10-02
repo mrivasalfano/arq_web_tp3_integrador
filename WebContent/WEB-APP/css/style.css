@@ -1,0 +1,12 @@
+span {
+    color: white;
+    display: block;
+}
+
+span:hover {
+    color: #CCCCCC;
+}
+
+body {
+/*     background: #d7d9db; */
+}

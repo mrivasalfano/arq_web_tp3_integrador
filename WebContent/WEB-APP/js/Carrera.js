@@ -1,7 +1,7 @@
 class Carrera extends CRUDGenerico {
     constructor() {
         super('carreras');
-        this.listaCarrera = document.querySelector('.carreras-container__lista');
+        this.listaCarrera = document.querySelector('.main');
     }
 
     mostrarCarreras(carreras) {

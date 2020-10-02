@@ -1,7 +1,7 @@
 class Matricula extends CRUDGenerico {
     constructor() {
         super('matriculas');
-        this.listaMatricula = document.querySelector('.matriculas-container__lista');
+        this.listaMatricula = document.querySelector('.main');
     }
 
     mostrarMatriculas(matriculas) {
