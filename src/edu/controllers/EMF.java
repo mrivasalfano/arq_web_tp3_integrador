@@ -27,7 +27,7 @@ public class EMF implements ServletContextListener {
 	 */
 	public void contextInitialized(ServletContextEvent arg0) {
 		emf = Persistence.createEntityManagerFactory("MySQL");
-//		insertStarter();
+		insertStarter();
 	}
 
 	/**
@@ -37,6 +37,10 @@ public class EMF implements ServletContextListener {
 		emf.close();
 	}
 
+	/**
+	 * Singleton
+	 * @return EntityManager
+	 */
 	public static EntityManager getEntityManager() {
 		if (emf == null) {
 			throw new IllegalStateException("Context is not initialized yet.");
@@ -44,6 +48,9 @@ public class EMF implements ServletContextListener {
 		return emf.createEntityManager();
 	}
 	
+	/**
+	 * Inserta datos de prueba en la base de datos
+	 */
 	private void insertStarter() {
 		Estudiante e1 = new Estudiante("Manuel", "Rivas", 21, "Masculino", 41856466, "Bolivar", 1);
 		Estudiante e2= new Estudiante("Manuel", "Garcia Amaro", 21, "Masculino", 12345678, "Bolivar", 2);

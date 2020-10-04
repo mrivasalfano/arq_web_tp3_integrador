@@ -24,6 +24,10 @@ public class CarreraDAO extends DAOGenericoImpl<Carrera>{
 		super(Carrera.class);
 	}
 	
+	/**
+	 * Singleton
+	 * @return instancia de CarreraDAO
+	 */
 	public static CarreraDAO getInstance() {
 		if(instance == null)
 			instance = new CarreraDAO();

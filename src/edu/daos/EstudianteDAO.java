@@ -11,8 +11,8 @@ import edu.entities.Estudiante;
 /**
  * Administra consultas hacia la BD de la entidad estudiante
  * @author teamBolivar
- * @version v1.0
- * @since   2020-09-21
+ * @version v2.0
+ * @since   05/10/20
  */
 public class EstudianteDAO extends DAOGenericoImpl<Estudiante>{
 	private static EstudianteDAO instance;
@@ -21,33 +21,15 @@ public class EstudianteDAO extends DAOGenericoImpl<Estudiante>{
 		super(Estudiante.class);
 	}
 	
+	/**
+	 * Singleton
+	 * @return Instancia de EstudianteDAO
+	 */
 	public static EstudianteDAO getInstance() {
 		if(instance == null)
 			instance = new EstudianteDAO();
 		
 		return instance;
-	}
-
-	/**
-	 * Persiste un estudiante en BD
-	 * @param e
-	 * @return id con el cual se almacena en BD
-	 */
-//	public boolean addEstudiante(Estudiante e) {
-//		EntityManager em = EMF.getEntityManager();
-//		em.getTransaction().begin();
-//		em.persist(e);
-//		em.getTransaction().commit();
-//		em.close();
-//		
-//		return this.getEstudiante(e.getId()) != null;
-//	}
-
-	public Estudiante getEstudiante(int id) {
-		EntityManager em = EMF.getEntityManager();
-		Estudiante e = em.find(Estudiante.class, id);
-		em.close();
-		return e;
 	}
 	
 	/**

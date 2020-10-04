@@ -29,25 +29,22 @@ public class MatriculaRestController {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Matricula> getMatriculas() {
-		return DAOFactoryImpl.getInstance().getMatriculaDAO().getMatriculas();
+		return DAOFactoryImpl.getInstance().getMatriculaDAO().getAll();
 	}
 	
-	//Va post
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addMatricula(Object o) {
 		
 		EstudianteDAO eRepo = DAOFactoryImpl.getInstance().getEstudianteDAO();
-//		CarreraDAO cRepo = new CarreraDAO();
 		CarreraDAO cRepo = DAOFactoryImpl.getInstance().getCarreraDAO();
 		MatriculaDAO mRepo = DAOFactoryImpl.getInstance().getMatriculaDAO();
-//		System.out.println(o);
+
 		int idEstudiante = (int)((Map) o).get("idEstudiante");
 		int idCarrera = (int)((Map) o).get("idCarrera");
 
-		Estudiante e = eRepo.getEstudiante(idEstudiante);
-//		Carrera c = cRepo.getCarrera(idCarrera);
+		Estudiante e = eRepo.getById(idEstudiante);
 		Carrera c = cRepo.getById(idCarrera);
 		
 		if((e == null)||(c == null)) {

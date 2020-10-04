@@ -11,7 +11,7 @@ import edu.controllers.EMF;
  * se espera que los DAOS concretos hereden de esta clase
  * @author teamBolivar
  * @version v1.0
- * @since   2020-10-05
+ * @since   05/10/20
  * @param <T> es de tipo, es el DAO que quiera implementar
  */
 public class DAOGenericoImpl<T> implements DAOGenerico<T>{	
